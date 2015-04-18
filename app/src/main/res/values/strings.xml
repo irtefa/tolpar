@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">তোলপাড়</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="prothom_alo">http://prothom-alo.com</string>
+    <string name="bdnews24">http://bdnews24.com/</string>
+    <string name="shironam">শিরোনাম</string>
+    <string name="tolpaar">তোলপাড়</string>
+    <string name="prothom_alo_bangla">প্রথম আলো</string>
+    <string name="binodon">বিনোদন</string>
+    <string name="antorjatik">আন্তর্জাতিক</string>
+    <string name="kheladhula">খেলাধুলা</string>
+    <string name="banijjo">বাণিজ্য</string>
+    <string name="rajniti">রাজনীতি</string>
+    <string name="source_nav_button">মূল সূত্রে পড়ুন </string>
+    <string name="title_activity_story">StoryActivity</string>
+    <string name="share_text">শেআর করুন </string>
+
+</resources>
