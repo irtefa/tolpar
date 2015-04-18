@@ -7,6 +7,9 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.parse.Parse;
 import com.crashlytics.android.Crashlytics;
+import com.parse.ParseException;
+import com.parse.ParsePush;
+import com.parse.SaveCallback;
 
 import java.util.HashMap;
 
@@ -48,5 +51,16 @@ public class App extends Application {
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "XGVNcjHi1Srbti86z0gkJZJ4XMir3CWJR1nJfq3f", "RC75wW84OybVFt4lYj8nI7CEQ27Dho7v8MCUnD2b");
+
+        ParsePush.subscribeInBackground("", new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Log.d("doge", "successfully subscribed to the broadcast channel.");
+                } else {
+                    Log.e("doge", "failed to subscribe for push", e);
+                }
+            }
+        });
     }
 }
