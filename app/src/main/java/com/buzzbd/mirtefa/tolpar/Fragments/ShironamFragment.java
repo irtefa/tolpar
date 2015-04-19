@@ -3,6 +3,7 @@ package com.buzzbd.mirtefa.tolpar.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -161,6 +162,7 @@ public class ShironamFragment extends Fragment {
                 e.printStackTrace();
                 holder.feedItemImage.setImageURI(Uri.parse("http://i.imgur.com/R5nLbfu.png"));
             }
+//            holder.feedItemTitle.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/SL.ttf"));
             holder.feedItemTitle.setText(mStories.get(position).get("Title").toString());
             return convertView;
         }

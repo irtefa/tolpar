@@ -72,7 +72,7 @@ public class StoryFragment extends Fragment implements View.OnClickListener {
         ButterKnife.inject(this, v);
 
         storyTitleView.setText(mTitle);
-//        storyContentView.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/Rupali.ttf"));
+//        storyContentView.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/SL.ttf"));
         storyContentView.setText(mContent);
 
         if (mImgUri != null) {

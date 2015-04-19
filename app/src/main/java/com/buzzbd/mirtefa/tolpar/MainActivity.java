@@ -16,6 +16,7 @@ import com.buzzbd.mirtefa.tolpar.Fragments.BinodonFragment;
 import com.buzzbd.mirtefa.tolpar.Fragments.FeedFragment;
 import com.buzzbd.mirtefa.tolpar.Fragments.KheladhulaFragment;
 import com.buzzbd.mirtefa.tolpar.Fragments.ShironamFragment;
+import com.facebook.FacebookSdk;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
@@ -38,7 +39,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
-
+        FacebookSdk.sdkInitialize(getApplicationContext());
         Fresco.initialize(this);
         EventBus.getDefault().register(this);
         setContentView(R.layout.activity_main);
@@ -67,6 +68,12 @@ public class MainActivity extends ActionBarActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         GoogleAnalytics.getInstance(this).reportActivityStop(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        com.facebook.appevents.AppEventsLogger.activateApp(this, getResources().getString(R.string.fb_app_id));
     }
 
     // Events

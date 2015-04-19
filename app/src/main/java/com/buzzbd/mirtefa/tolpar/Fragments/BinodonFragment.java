@@ -162,7 +162,7 @@ public class BinodonFragment extends Fragment {
                 e.printStackTrace();
                 holder.feedItemImage.setImageURI(Uri.parse("http://i.imgur.com/R5nLbfu.png"));
             }
-//            holder.feedItemTitle.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/Rupali.ttf"));
+//            holder.feedItemTitle.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/SL.ttf"));
             holder.feedItemTitle.setText(mStories.get(position).get("Title").toString());
             return convertView;
         }

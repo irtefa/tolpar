@@ -24,8 +24,8 @@ android {
         applicationId "com.tolpar.mirtefa.tolpar"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 6
-        versionName "0.6"
+        versionCode 7
+        versionName "0.7"
     }
     buildTypes {
         release {
@@ -56,4 +56,5 @@ dependencies {
         transitive = true;
     }
     compile 'com.google.android.gms:play-services:6.5.87'
+    compile 'com.facebook.android:facebook-android-sdk:4.0.1'
 }

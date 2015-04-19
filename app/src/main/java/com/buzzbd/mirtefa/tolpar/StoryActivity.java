@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import com.buzzbd.mirtefa.tolpar.Fragments.ImageViewFragment;
 import com.buzzbd.mirtefa.tolpar.Fragments.MyWebViewFragment;
 import com.buzzbd.mirtefa.tolpar.Fragments.StoryFragment;
+import com.facebook.FacebookSdk;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.parse.FindCallback;
@@ -49,6 +50,7 @@ public class StoryActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         EventBus.getDefault().register(this);
         setContentView(R.layout.activity_story);
         mActionBar = getSupportActionBar();
@@ -142,6 +144,12 @@ public class StoryActivity extends ActionBarActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         GoogleAnalytics.getInstance(this).reportActivityStop(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        com.facebook.appevents.AppEventsLogger.activateApp(this, getResources().getString(R.string.fb_app_id));
     }
 
     @Override
