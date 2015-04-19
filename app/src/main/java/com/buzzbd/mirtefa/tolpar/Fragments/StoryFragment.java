@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,9 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.shamanland.fab.FloatingActionButton;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -72,12 +76,18 @@ public class StoryFragment extends Fragment implements View.OnClickListener {
         storyContentView.setText(mContent);
 
         if (mImgUri != null) {
-            final Uri uri = Uri.parse(mImgUri);
-            storyImgView.setImageURI(uri);
-            storyImgView.setOnClickListener(this);
+            try {
+                URL url = new URL(mImgUri);
+                final Uri uri = Uri.parse(mImgUri);
+                storyImgView.setImageURI(uri);
+            } catch (MalformedURLException e) {
+                storyImgView.setImageURI(Uri.parse("http://imgur.com/R5nLbfu"));
+                storyImgView.setOnClickListener(this);
+            }
         }
         sourceNavButton.setOnClickListener(this);
         shareButton.setOnClickListener(this);
+        storyImgView.setOnClickListener(this);
 
         if (mSrcUrl != null)
             sourceNavButton.setVisibility(View.VISIBLE);

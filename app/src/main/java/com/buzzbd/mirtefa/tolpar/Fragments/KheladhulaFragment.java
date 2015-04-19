@@ -28,6 +28,8 @@ import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -152,7 +154,16 @@ public class KheladhulaFragment extends Fragment {
                 holder = new ViewHolder(convertView);
                 convertView.setTag(holder);
             }
-            holder.feedItemImage.setImageURI(Uri.parse(mStories.get(position).get("ImgUri").toString()));
+
+            try {
+                URL url = new URL(mStories.get(position).get("ImgUri").toString());
+                Uri uri = Uri.parse(mStories.get(position).get("ImgUri").toString());
+                holder.feedItemImage.setImageURI(uri);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                holder.feedItemImage.setImageURI(Uri.parse("http://i.imgur.com/R5nLbfu.png"));
+            }
+
 //            holder.feedItemTitle.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/Rupali.ttf"));
             holder.feedItemTitle.setText(mStories.get(position).get("Title").toString());
             return convertView;

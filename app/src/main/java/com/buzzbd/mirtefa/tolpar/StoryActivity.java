@@ -216,7 +216,6 @@ public class StoryActivity extends ActionBarActivity {
 
     public void onEventMainThread(StoryFragment.ClickedImage event) {
         imgUri = event.imgUri;
-
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
 
