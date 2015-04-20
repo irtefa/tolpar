@@ -51,6 +51,7 @@ public class StoryActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
         FacebookSdk.sdkInitialize(getApplicationContext());
+        Fresco.initialize(this);
         EventBus.getDefault().register(this);
         setContentView(R.layout.activity_story);
         mActionBar = getSupportActionBar();
@@ -68,7 +69,6 @@ public class StoryActivity extends ActionBarActivity {
             storyObjectId = getIntent().getStringExtra("storyObjectId");
             launchFragment();
         } else {
-            Fresco.initialize(this);
             List<String> params = data.getPathSegments();
             storyObjectId = params.get(1);
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Story");
@@ -137,6 +137,11 @@ public class StoryActivity extends ActionBarActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //No call for super(). Bug on API Level > 11.
     }
 
     @Override

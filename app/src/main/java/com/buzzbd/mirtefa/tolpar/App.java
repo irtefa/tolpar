@@ -52,7 +52,7 @@ public class App extends Application {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "XGVNcjHi1Srbti86z0gkJZJ4XMir3CWJR1nJfq3f", "RC75wW84OybVFt4lYj8nI7CEQ27Dho7v8MCUnD2b");
 
-        ParsePush.subscribeInBackground("", new SaveCallback() {
+        ParsePush.subscribeInBackground("test", new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
