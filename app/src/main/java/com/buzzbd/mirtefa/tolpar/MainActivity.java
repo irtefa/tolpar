@@ -39,7 +39,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        if (!BuildConfig.DEBUG)
+            FacebookSdk.sdkInitialize(getApplicationContext());
         Fresco.initialize(this);
         EventBus.getDefault().register(this);
         setContentView(R.layout.activity_main);
@@ -73,7 +74,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        com.facebook.appevents.AppEventsLogger.activateApp(this, getResources().getString(R.string.fb_app_id));
+        if (!BuildConfig.DEBUG)
+            com.facebook.appevents.AppEventsLogger.activateApp(this, getResources().getString(R.string.fb_app_id));
     }
 
     // Events

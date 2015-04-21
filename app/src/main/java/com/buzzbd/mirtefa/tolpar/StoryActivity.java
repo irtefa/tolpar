@@ -50,7 +50,8 @@ public class StoryActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        if (!BuildConfig.DEBUG)
+            FacebookSdk.sdkInitialize(getApplicationContext());
         Fresco.initialize(this);
         EventBus.getDefault().register(this);
         setContentView(R.layout.activity_story);
@@ -154,7 +155,8 @@ public class StoryActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        com.facebook.appevents.AppEventsLogger.activateApp(this, getResources().getString(R.string.fb_app_id));
+        if (!BuildConfig.DEBUG)
+            com.facebook.appevents.AppEventsLogger.activateApp(this, getResources().getString(R.string.fb_app_id));
     }
 
     @Override
@@ -203,19 +205,19 @@ public class StoryActivity extends ActionBarActivity {
         if (fragment == null) {
             fm.beginTransaction()
                     .add(R.id.fragmentContainer, fragment)
-                    .commit();
+                    .commitAllowingStateLoss();
         } else {
             if (StoryActivity.mPage.equals(EventValues.story)) {
                 fm.beginTransaction()
                         .replace(R.id.fragmentContainer,
                                 fragment)
-                        .commit();
+                        .commitAllowingStateLoss();
             } else {
                 fm.beginTransaction()
                         .replace(R.id.fragmentContainer,
                                 fragment)
                         .addToBackStack(null)
-                        .commit();
+                        .commitAllowingStateLoss();
             }
         }
     }
