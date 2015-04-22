@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.buzzbd.mirtefa.tolpar.App;
+import com.buzzbd.mirtefa.tolpar.BuildConfig;
 import com.buzzbd.mirtefa.tolpar.EventValues;
 import com.buzzbd.mirtefa.tolpar.MainActivity;
 import com.buzzbd.mirtefa.tolpar.R;
@@ -102,19 +103,21 @@ public class StoryFragment extends Fragment implements View.OnClickListener {
         super.onResume();
         MainActivity.mPage = EventValues.story;
 
-        // Get tracker.
-        Tracker t = ((App) getActivity().getApplication()).getTracker(
-                App.TrackerName.APP_TRACKER);
+        if (!BuildConfig.DEBUG) {
+            // Get tracker.
+            Tracker t = ((App) getActivity().getApplication()).getTracker(
+                    App.TrackerName.APP_TRACKER);
 
-        // Set screen name.
-        t.setScreenName(mTitle);
-        // Send a screen view.
-        t.send(new HitBuilders.ScreenViewBuilder().build());
-        t.send(new HitBuilders.EventBuilder()
-                .setCategory("Story")
-                .setAction("View")
-                .setLabel("Title: " + mTitle + ", ObjectId: " + StoryActivity.storyObjectId)
-                .build());
+            // Set screen name.
+            t.setScreenName(mTitle);
+            // Send a screen view.
+            t.send(new HitBuilders.ScreenViewBuilder().build());
+            t.send(new HitBuilders.EventBuilder()
+                    .setCategory("Story")
+                    .setAction("View")
+                    .setLabel("Title: " + mTitle + ", ObjectId: " + StoryActivity.storyObjectId)
+                    .build());
+        }
     }
 
     @Override
@@ -136,11 +139,13 @@ public class StoryFragment extends Fragment implements View.OnClickListener {
             }
             case R.id.share_button: {
                 EventBus.getDefault().post(new ClickedShareButton());
-                t.send(new HitBuilders.EventBuilder()
-                        .setCategory("Story")
-                        .setAction("Share")
-                        .setLabel("Title: " + mTitle + ", ObjectId: " + StoryActivity.storyObjectId)
-                        .build());
+                if (!BuildConfig.DEBUG) {
+                    t.send(new HitBuilders.EventBuilder()
+                            .setCategory("Story")
+                            .setAction("Share")
+                            .setLabel("Title: " + mTitle + ", ObjectId: " + StoryActivity.storyObjectId)
+                            .build());
+                }
                 break;
             }
         }

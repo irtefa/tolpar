@@ -170,9 +170,6 @@ public class KheladhulaFragment extends Fragment {
     }
 
     public void loadData() {
-        final ProgressDialog pDialog = new ProgressDialog(getActivity());
-        pDialog.setMessage("Loading...");
-        pDialog.show();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Story");
         query.whereEqualTo("Tag", mTag);
         query.orderByDescending("createdAt");
@@ -189,7 +186,6 @@ public class KheladhulaFragment extends Fragment {
                         adapter.notifyDataSetChanged();
                         ParseObject.pinAllInBackground(parseObjects);
                         swipeLayout.setRefreshing(false);
-                        pDialog.hide();
                     } else {
                         Log.d("score", "Error: " + e.getMessage());
                     }
@@ -206,7 +202,6 @@ public class KheladhulaFragment extends Fragment {
                         adapter.notifyDataSetChanged();
                         ParseObject.pinAllInBackground(parseObjects);
                         swipeLayout.setRefreshing(false);
-                        pDialog.hide();
                     } else {
                         Log.d("score", "Error: " + e.getMessage());
                     }

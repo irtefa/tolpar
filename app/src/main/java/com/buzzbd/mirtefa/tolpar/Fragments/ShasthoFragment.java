@@ -37,20 +37,20 @@ import butterknife.InjectView;
 import de.greenrobot.event.EventBus;
 
 
-public class BanijjoFragment extends Fragment {
-    @InjectView(R.id.banijjo_grid_view) StaggeredGridView mFeedGridView;
-    @InjectView(R.id.banijjo_swipe_container) SwipeRefreshLayout swipeLayout;
+public class ShasthoFragment extends Fragment {
+    @InjectView(R.id.shastho_grid_view) StaggeredGridView mFeedGridView;
+    @InjectView(R.id.shastho_swipe_container) SwipeRefreshLayout swipeLayout;
 
     public static FeedAdapter adapter = null;
     public static ArrayList<ParseObject> stories;
     public static String mTag = null;
 
-    public BanijjoFragment() {
+    public ShasthoFragment() {
         // Required empty public constructor
     }
 
-    public static BanijjoFragment newInstance(String tag) {
-        BanijjoFragment fragment = new BanijjoFragment();
+    public static ShasthoFragment newInstance(String tag) {
+        ShasthoFragment fragment = new ShasthoFragment();
         Bundle args = new Bundle();
         mTag = tag;
         return  fragment;
@@ -68,7 +68,7 @@ public class BanijjoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_banijjo, container, false);
+        View v = inflater.inflate(R.layout.fragment_shastho, container, false);
         ButterKnife.inject(this, v);
         adapter = new FeedAdapter(getActivity(), stories);
         mFeedGridView.setAdapter(adapter);

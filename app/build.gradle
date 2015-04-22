@@ -24,8 +24,8 @@ android {
         applicationId "com.tolpar.mirtefa.tolpar"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 8
-        versionName "0.7.1"
+        versionCode 11
+        versionName "0.8"
     }
     buildTypes {
         release {

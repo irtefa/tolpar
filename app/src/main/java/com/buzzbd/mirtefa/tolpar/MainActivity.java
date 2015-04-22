@@ -15,6 +15,7 @@ import com.buzzbd.mirtefa.tolpar.Fragments.BanijjoFragment;
 import com.buzzbd.mirtefa.tolpar.Fragments.BinodonFragment;
 import com.buzzbd.mirtefa.tolpar.Fragments.FeedFragment;
 import com.buzzbd.mirtefa.tolpar.Fragments.KheladhulaFragment;
+import com.buzzbd.mirtefa.tolpar.Fragments.ShasthoFragment;
 import com.buzzbd.mirtefa.tolpar.Fragments.ShironamFragment;
 import com.facebook.FacebookSdk;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -92,7 +93,7 @@ public class MainActivity extends ActionBarActivity {
 
     //ViewPager Adapter
     public class TabsPagerAdapter extends FragmentStatePagerAdapter {
-        private static final int NUM_TABS = 6;
+        private static final int NUM_TABS = 7;
 
         public TabsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -139,6 +140,11 @@ public class MainActivity extends ActionBarActivity {
                     mTitle = "Banijjo";
                     break;
                 }
+                case 6: {
+                    fragment = ShasthoFragment.newInstance("Shastho");
+                    mTitle = "Shastho";
+                    break;
+                }
                 default:
                     fragment = FeedFragment.newInstance("Rajniti");
                     mTitle = "Rajniti";
@@ -174,6 +180,8 @@ public class MainActivity extends ActionBarActivity {
                     return getResources().getString(R.string.antorjatik);
                 case 5:
                     return getResources().getString(R.string.banijjo);
+                case 6:
+                    return getResources().getString(R.string.shastho);
             }
             return null;
         }
